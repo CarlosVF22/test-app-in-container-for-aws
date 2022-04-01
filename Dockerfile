@@ -1,10 +1,14 @@
+# reutilizamos el cache entre las capas
 FROM node:12
 
-COPY [".", "/usr/src/"]
+COPY ["package.json","package-lock.json", "/usr/src/"]
 
 WORKDIR /usr/src
 
 RUN npm install
+# mientras no realizamos cambios en package json este codigo
+
+COPY [".", "/usr/src"]
 
 EXPOSE 3000
 
